@@ -9,6 +9,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import BondManageSerializers, SalesRecordSerializers
+from .authentications import SalesPersonPermission, AdministatorPermission, CustomerPermission
 
 # Own Library
 
@@ -16,7 +17,7 @@ from .serializers import BondManageSerializers, SalesRecordSerializers
 
 
 class BondManage(APIView):
-    permission_classes = [Administrator]
+    permission_classes = [AdministatorPermission]
     def post(self, request):
         data = request.data
         serilized_data = BondManageSerializers(data=data, many=True)
@@ -34,7 +35,7 @@ class BondManage(APIView):
 
 
 class SellBond(APIView):
-    permission_classes = [SalesPerson]
+    permission_classes = [SalesPersonPermission]
     def post(self, request):
         data = request.data
         serilized_data = SalesRecordSerializers(data=data, many=True)
@@ -45,7 +46,7 @@ class SellBond(APIView):
 
 
 class BuyBond(APIView):
-    permission_classes = [Customer]
+    permission_classes = [CustomerPermission]
     def post(self, request):
         data = request.data
         serilized_data = SalesRecordSerializers(data=data, many=True)
