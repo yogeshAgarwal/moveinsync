@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-AUTH_USER_MODEL = "bond_portfolio.BaseUser" 
+AUTH_USER_MODEL = "bond_portfolio.BaseUser"
 # Application definition
 
 INSTALLED_APPS = [

@@ -92,7 +92,7 @@ class Bond(models.Model):
 
 
 class SalesRecord(models.Model):
-    bond = ForeignKey(Bond, on_delete=DO_NOTHING)
-    sales_person = ForeignKey(SalesPerson, on_delete=DO_NOTHING)
-    customer = ForeignKey(Customer, on_delete=DO_NOTHING)
+    bond = models.ForeignKey(Bond, on_delete=DO_NOTHING)
+    sales_person = models.ForeignKey(SalesPerson, on_delete=DO_NOTHING, related_name='sales_person')
+    customer = models.ForeignKey(Customer, on_delete=DO_NOTHING)
     is_active = models.BooleanField(default=True)
