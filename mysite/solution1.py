@@ -1,20 +1,20 @@
 class Solution:
-    def totalFruit(self, tree: List[int]) -> int:
-        len_tree = len(tree)
+    def totalFruit(self, input) -> int:
+        len_input = len(input)
         i = 0
         max_value = 0
-        while(i<len_tree):
+        while(i<len_input):
             # print("outer",i)
             value = 0
             aa = set()
-            aa.add(tree[i])
+            aa.add(input[i])
             temp_index = i
             value += 1
             i += 1
             # print("outer,set",aa)
-            while(i<len_tree):
+            while(i<len_input):
                 # print("inner",i)
-                aa.add(tree[i])
+                aa.add(input[i])
                 if len(aa) == 1:
                     temp_index = i
                 # print("inner set",aa)
