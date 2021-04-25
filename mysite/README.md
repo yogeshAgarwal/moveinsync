@@ -1,1 +1,0 @@
-It's a Django project, you need to first install all the packages in requirement.txt  and then run python manage.py runserver to run the project. after that, you can access different API on different URL at the local host.
