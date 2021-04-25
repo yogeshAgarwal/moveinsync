@@ -12,7 +12,7 @@ class AdministatorPermission(BasePermission):
 
     def has_permission(self, request, view):
         access_user_id = request.data.get('user_id', None)
-        user_ob = BaseUser.objects.filter(id=access_user_id)
+        user_ob = BaseUser.objects.filter(id=access_user_id).first()
         if user_ob:
             if user_ob.types == BaseUser.Types.ADMINISTRATOR:
                 return True
@@ -25,7 +25,7 @@ class SalesPersonPermission(BasePermission):
 
     def has_permission(self, request, view):
         access_user_id = request.data.get('user_id', None)
-        user_ob = BaseUser.objects.filter(id=access_user_id)
+        user_ob = BaseUser.objects.filter(id=access_user_id).first()
         if user_ob:
             if user_ob.types == BaseUser.Types.SALES_PERSON:
                 return True
@@ -37,7 +37,7 @@ class CustomerPermission(BasePermission):
 
     def has_permission(self, request, view):
         access_user_id = request.data.get('user_id', None)
-        user_ob = BaseUser.objects.filter(id=access_user_id)
+        user_ob = BaseUser.objects.filter(id=access_user_id).first()
         if user_ob:
             if user_ob.types == BaseUser.Types.CUSTOMER:
                 return True

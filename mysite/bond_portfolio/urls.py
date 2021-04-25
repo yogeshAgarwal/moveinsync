@@ -3,8 +3,9 @@ from django.urls import path
 from .views import SellBond, BuyBond, BondManage
 
 urlpatterns = [
-    path('sales-bond/', SellBond.as_view(),
+    path('sale-bond/', SellBond.as_view(),
          name='sell_bond'),
-    path('manage-bond/', BondManage.as_view(), name='manage_bond')
+    path('create-bond/', BondManage.as_view(), name='create_bond'),
+    path('update-bond/<int:pk>/', BondManage.as_view(), name='update_bond')
 
 ]

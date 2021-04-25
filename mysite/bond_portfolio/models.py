@@ -84,9 +84,9 @@ class Administrator(BaseUser):
 class Bond(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
-    pricing = models.FloatField()
-    avg_return = models.FloatField()
-    current_profit_predition = models.FloatField()
+    pricing = models.FloatField(null=False)
+    avg_return = models.FloatField(null=False)
+    current_profit_predition = models.FloatField(null=False)
     updated_date = models.DateTimeField()
     created_date = models.DateTimeField()
 
