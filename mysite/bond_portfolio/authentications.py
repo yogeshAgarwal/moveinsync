@@ -11,7 +11,7 @@ class AdministatorPermission(BasePermission):
     message = "Access Denied"
 
     def has_permission(self, request, view):
-        access_user_id = request.user.get('user_id', None)
+        access_user_id = request.data.get('user_id', None)
         user_ob = BaseUser.objects.filter(id=access_user_id)
         if user_ob:
             if user_ob.types == BaseUser.Types.ADMINISTRATOR:
@@ -24,7 +24,7 @@ class SalesPersonPermission(BasePermission):
     message = "Access Denied"
 
     def has_permission(self, request, view):
-        access_user_id = request.user.get('user_id', None)
+        access_user_id = request.data.get('user_id', None)
         user_ob = BaseUser.objects.filter(id=access_user_id)
         if user_ob:
             if user_ob.types == BaseUser.Types.SALES_PERSON:
@@ -36,7 +36,7 @@ class CustomerPermission(BasePermission):
     message = "Access Denied"
 
     def has_permission(self, request, view):
-        access_user_id = request.user.get('user_id', None)
+        access_user_id = request.data.get('user_id', None)
         user_ob = BaseUser.objects.filter(id=access_user_id)
         if user_ob:
             if user_ob.types == BaseUser.Types.CUSTOMER:
