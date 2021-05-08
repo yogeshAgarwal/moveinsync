@@ -55,9 +55,6 @@ class SalesPerson(BaseUser):
 
     class Meta:
         proxy = True
-        permissions = [
-            ("can_sell_bond", "can sell bond to customer")
-        ]
 
     def save(self, *args, **kwargs):
         if not self.pk:
@@ -69,12 +66,6 @@ class Administrator(BaseUser):
 
     class Meta:
         proxy = True
-        permissions = [
-            ("can_add_bond", "Can create a new bond"),
-            ("can_delete_bond", "can delete an old bond only if it is not holded by any customer"),
-            ("can_see_customers", "can see all the customer for a bond"),
-            ("can_see_bonds", "can see all the customer for a bond"),
-        ]
 
     def save(self, *args, **kwargs):
         if not self.pk:
