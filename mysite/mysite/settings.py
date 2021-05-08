@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bond_portfolio.apps.BondPortfolioConfig'
+    'bond_portfolio.apps.BondPortfolioConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

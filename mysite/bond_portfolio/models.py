@@ -84,6 +84,8 @@ class Bond(models.Model):
 
 class SalesRecord(models.Model):
     bond = models.ForeignKey(Bond, on_delete=DO_NOTHING)
-    sales_person = models.ForeignKey(SalesPerson, on_delete=DO_NOTHING, related_name='sales_person')
+    sales_person = models.ForeignKey(SalesPerson, on_delete=DO_NOTHING,
+                                        related_name='sales_person',null=True)
     customer = models.ForeignKey(Customer, on_delete=DO_NOTHING)
     is_active = models.BooleanField(default=True)
+    created_date = models.DateTimeField()

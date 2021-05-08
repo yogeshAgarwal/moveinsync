@@ -15,15 +15,12 @@ class BondManageSerializers(serializers.ModelSerializer):
         print(instance.name)
         return instance
 
-class SalesRecordSerializers(serializers.ModelSerializer):
+# class SalesRecordSerializers(serializers.Serializer):
+#     bond = serializers.IntegerField()
+#     customer = serializers.CharField()
+#     sales_person = serializers.
 
-    class Meta:
-        model = SalesRecord
-        fields = "__all__"
     
-    
-    def update(self, instance, validated_data):
-        print(instance.name)
-        instance = validated_data.get('name', instance.name)
-        instance.save()
-        return instance
+#     def create(self, validated_data):
+#         return SalesRecord(**validated_data)
+
