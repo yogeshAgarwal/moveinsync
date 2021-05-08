@@ -10,9 +10,9 @@ from bond_portfolio.models import Administrator, Customer, SalesPerson
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import BondManageSerializers
+from .serializers import BondManageSerializers, SalesRecordSerializers
 from .authentications import IsCustomer,IsAdministor,IsSalesPerson
-from .models import Bond, BaseUser
+from .models import Bond, BaseUser, SalesRecord
 
 # Own Library
 
@@ -97,9 +97,11 @@ class ListCustomerBond(APIView):
     def post(self, request):
         data = request.data
         username = data.get('username',None)
+
         if not username:
-        # serilized_data = SalesRecordSerializers(data=data)
-        # if serilized_data.is_valid():
-            serilized_data.save()
             return Response({"msg":"Sales Record Created Successfully"},status=status.HTTP_400_BAD_REQUEST)
-        return Response({"msg":serilized_data.errors},status=status.HTTP_201_CREATED)
+
+        customer = Customer.objects.filter(username=username)
+        required_data = SalesRecord.objects.filter(customer=customer)
+        serialized_data = SalesRecordSerializers(required_data, many=True)
+        return Response({"data":serialized_data.data},status=status.HTTP_200_OK)

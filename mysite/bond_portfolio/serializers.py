@@ -6,7 +6,7 @@ class BondManageSerializers(serializers.ModelSerializer):
     class Meta:
         model = Bond
         fields = "__all__"
-    
+
     def update(self, instance, validated_data):
         print("yogesh")
         print(instance.name)
@@ -15,12 +15,8 @@ class BondManageSerializers(serializers.ModelSerializer):
         print(instance.name)
         return instance
 
-# class SalesRecordSerializers(serializers.Serializer):
-#     bond = serializers.IntegerField()
-#     customer = serializers.CharField()
-#     sales_person = serializers.
 
-    
-#     def create(self, validated_data):
-#         return SalesRecord(**validated_data)
-
+class SalesRecordSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = SalesRecord
+        fields = "__all__"
